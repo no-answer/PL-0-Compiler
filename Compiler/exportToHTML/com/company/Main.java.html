@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.company</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">staticVar.Code</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">staticVar.synTable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">subProgram.BLOCK</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">subProgram.ErrorException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">subProgram.SYM</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.io.File</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.IOException</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Main {</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args) </span><span class="s0">throws </span><span class="s1">IOException {</span>
+        <span class="s1">File file = </span><span class="s0">new </span><span class="s1">File(</span><span class="s2">&quot;src/resource/demo.txt&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">SYM sym = </span><span class="s0">new </span><span class="s1">SYM()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">sym.split(file)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">catch </span><span class="s1">(ErrorException error) {</span>
+            <span class="s1">System.out.println(error)</span><span class="s0">;</span>
+            <span class="s0">return ;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">String symFile = </span><span class="s2">&quot;sym.txt&quot;</span><span class="s0">;</span>
+        <span class="s1">sym.printSYM(sym</span><span class="s0">, </span><span class="s1">symFile)</span><span class="s0">; </span><span class="s3">// 将词法分析结果输出到文件sym.txt中</span>
+
+        <span class="s1">String syntaxTreeFile = </span><span class="s2">&quot;tree.txt&quot;</span><span class="s0">;</span>
+        <span class="s1">BLOCK block = </span><span class="s0">new </span><span class="s1">BLOCK(sym)</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s0">if </span><span class="s1">(!block.program(syntaxTreeFile))     </span><span class="s3">// 对程序进行语法分析</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot;Compile Error&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">else</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot;Compile Success&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">synTable.printSynTable(</span><span class="s2">&quot;synTable.txt&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Code.printCodes(</span><span class="s2">&quot;code.txt&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">catch </span><span class="s1">(ErrorException error) {</span>
+            <span class="s1">System.out.println(error)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s3">// Implement implement = new Implement(Code.getCodes());</span>
+        <span class="s3">// implement.implement();</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

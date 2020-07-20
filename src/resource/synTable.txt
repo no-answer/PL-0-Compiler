@@ -1,0 +1,10 @@
+0: c1 const 2
+1: v1 var 0 3
+2: v2 var 0 4
+3: v3 var 0 5
+4: v4 var 0 6
+5: p1 procedure 0 1
+6: v5 var 0 8
+7: p2 procedure 0 5
+8: c2 const 2
+9: p3 procedure 0 7
